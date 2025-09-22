@@ -1,11 +1,8 @@
-from src.Animal import Animal
-from src.Bird import Bird
-from src.Snake import Snake
-from src.Zoo import Zoo
+from src.Zoo.Bird import Bird
+from src.Zoo.Snake import Snake
+from src.Zoo.Zoo import Zoo
 
 if __name__ == "__main__":
-
-
     bird = Bird (1,1, 1)
     snake = Snake(1,1)
     zoo1 = Zoo([snake, bird])
@@ -26,4 +23,3 @@ if __name__ == "__main__":
     print("Zoo3:")
     for animal in zoo3.list():
         print(str(animal))
-
