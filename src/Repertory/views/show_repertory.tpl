@@ -3,7 +3,8 @@
 <h3>My Repertory</h3>
 <table border="1">
     <tr>
-        <th>Edit</th>
+        <th> </th>
+        <th> </th>
         <th>First name</th>
         <th>Family name</th>
         <th>Birth date</th>
@@ -13,7 +14,8 @@
     </tr>
     %for person in repertory.people:
     <tr>
-        <td>Edit</td>
+        <td><a href={{"/remove/"+str(person.id)}}>Supp</a></td>
+        <td><a href={{"/edit/"+str(person.id)}}>Edit</a></td>
         <td>{{person.first_name}}</td>
         <td>{{person.family_name}}</td>
         <td>{{person.birth_date.day}} / {{person.birth_date.month}} / {{person.birth_date.year}}</td>

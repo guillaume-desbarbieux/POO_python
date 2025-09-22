@@ -1,5 +1,8 @@
 from datetime import datetime
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+
+from pygments.lexer import default
+
 
 @dataclass()
 class Contact:
@@ -20,11 +23,18 @@ class PostalAddress:
 
 @dataclass()
 class Person:
+    _counter:int = field(init = False, default = 0, repr = False)
+
+    id : int = field(init=False)
     family_name : str
     first_name : str
     birth_date : datetime
     contact : Contact
     postal_address : PostalAddress
+
+    def __post_init__(self):
+        type(self)._counter += 1
+        self.id = type(self)._counter
 
     def __str__(self):
         return f"""{self.first_name} {self.family_name} ({self.birth_date.day}/{self.birth_date.month}/{self.birth_date.year})
@@ -40,10 +50,11 @@ class Repertory:
             self.people.append(person)
 
     def __str__(self):
-        answer = ""
-        for person in self.people:
-            answer += str(person) + "\n\n"
-        return answer
+        return "\n\n".join(str(person) for person in self.people)
+
+    def remove(self, id):
+        self.people = [person for person in self.people if person.id != id]
+
 
 if __name__ == "__main__":
 
