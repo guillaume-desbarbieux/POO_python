@@ -1,9 +1,6 @@
 from datetime import datetime
 from dataclasses import dataclass, field
 
-from pygments.lexer import default
-
-
 @dataclass()
 class Contact:
     phone_number : str
